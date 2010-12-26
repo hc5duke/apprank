@@ -1,7 +1,7 @@
 require 'apprank/app'
 
 module Apprank
-  class Apprank
+  class Rank
 
     attr_accessor :apps, :link, :updated
 
@@ -9,7 +9,7 @@ module Apprank
       begin
         data = JSON.load(text)
         apps_data = data["feed"]["entry"]
-        @link = data["feed"]["attributes"]["href"]
+        @link = data["feed"]["id"]["href"]
         @apps = apps_data.map do |app|
             Apprank::App.new(app)
           end

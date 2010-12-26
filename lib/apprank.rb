@@ -1,6 +1,6 @@
 require 'json'
 require 'time'
-require 'apprank/apprank'
+require 'apprank/rank'
 
 module Apprank
   class BadJsonData < RuntimeError; end

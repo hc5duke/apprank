@@ -4,6 +4,7 @@ require 'faker'
 include Apprank
 
 def create_fake_app
+  itunes_id = rand(100000).to_s
   expected = {
     :name => Faker::Company.bs,
     :icon_urls => {
@@ -20,7 +21,8 @@ def create_fake_app
     :title => Faker::Company.bs + Faker::Company.name,
     :link => Faker::Internet.domain_name,
     :preview => Faker::Internet.domain_name,
-    :itunes_url => Faker::Internet.domain_name,
+    :itunes_id => itunes_id,
+    :itunes_url => Faker::Internet.domain_name + '/id' + itunes_id + '?foo=bar',
     :developer => {
       :name => Faker::Company.name,
       :url => Faker::Internet.domain_name
@@ -105,7 +107,6 @@ def create_fake_app
 end
 
 def create_fake_feed(length=100)
-
   {
     "feed" => {
       "author" => {

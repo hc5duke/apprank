@@ -22,6 +22,8 @@ describe App do
       date_diff = app.release_date - expected[:release_date]
       date_diff.should <= 1
 
+      app.itunes_id.should     == expected[:itunes_id]
+
     end
   end
 
