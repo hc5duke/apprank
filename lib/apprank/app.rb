@@ -49,7 +49,7 @@ module Apprank
     end
 
     def is_free?
-      self.price.zero?
+      self.price[:amount].zero?
     end
 
   end

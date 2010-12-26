@@ -9,7 +9,7 @@ module Apprank
       begin
         data = JSON.load(text)
         apps_data = data["feed"]["entry"]
-        @link = data["feed"]["id"]["href"]
+        @link = data["feed"]["link"].last["attributes"]["href"]
         @apps = apps_data.map do |app|
             Apprank::App.new(app)
           end
