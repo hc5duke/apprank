@@ -108,32 +108,30 @@ end
 
 def create_fake_feed(length=100)
   {
-    "feed" => {
-      "author" => {
-        "name" => { "label" => Faker::Company.name },
-        "uri" => { "label" => Faker::Internet.domain_name }
-      },
-      "entry" => length.times.map{ create_fake_app[2] },
-      "updated" => { "label" => Time.now },
-      "rights" => { "label" => Faker::Company.catch_phrase },
-      "title" => { "label" => Faker::Company.bs },
-      "icon" => { "label" => Faker::Internet.domain_name },
-      "link" => [
-        {
-          "attributes" => {
-            "rel" => "alternate",
-            "type" => "text/html",
-            "href" => Faker::Internet.domain_name
-          }
-        },
-        {
-          "attributes" => {
-            "rel" => "self",
-            "href" => Faker::Internet.domain_name + "?cc=us"
-          }
+    :author => {
+      :name => { :label => Faker::Company.name },
+      :uri => { :label => Faker::Internet.domain_name }
+    },
+    :entry => length.times.map{ create_fake_app[2] },
+    :updated => { :label => Time.now },
+    :rights => { :label => Faker::Company.catch_phrase },
+    :title => { :label => Faker::Company.bs },
+    :icon => { :label => Faker::Internet.domain_name },
+    :link => [
+      {
+        :attributes => {
+          :rel => "alternate",
+          :type => "text/html",
+          :href => Faker::Internet.domain_name
         }
-      ],
-      "id" => { "label" => Faker::Internet.domain_name + "?cc=us" }
-    }
-  }.to_json
+      },
+      {
+        :attributes => {
+          :rel => "self",
+          :href => Faker::Internet.domain_name + "?cc=us"
+        }
+      }
+    ],
+    :id => { :label => Faker::Internet.domain_name + "?cc=us" }
+  }
 end
