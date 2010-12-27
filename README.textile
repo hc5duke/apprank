@@ -17,5 +17,5 @@ require 'open-uri'
 require 'apprank'
 json = open('http://itunes.apple.com/us/rss/topfreeapplications/limit=25/json')
 rank = Apprank::Rank.new(json)
-puts rank.apps.first.name # => "Some popular free app name"
+rank.apps.first.name # => "Some popular free app name"
 </pre>
