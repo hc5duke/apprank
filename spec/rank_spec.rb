@@ -8,7 +8,7 @@ describe Rank do
       feed = create_fake_feed(100)
       rank = Rank.new({ :feed => feed }.to_json)
       rank.apps.length.should == 100
-      rank.link.should == feed[:id][:href]
+      rank.link.should == feed[:link][1][:attributes][:href]
       (rank.updated - Time.now).abs.should < 10
 
     end
