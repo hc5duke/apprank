@@ -1,8 +1,10 @@
 module Apprank
   class App
 
-    attr_accessor :name, :icon_urls, :summary, :price, :rights, :display_name,
-      :preview, :link, :itunes_url, :developer, :category, :release_date
+    attr_accessor :name, :icon_urls, :summary, :price, :content_type, :rights, :title,
+      :link, :itunes_url, :itunes_id, :bundle_id, :artist, :artist, :category, :release_date
+
+    alias_method :developer, :artist
 
     def initialize(hash)
       @name = hash["im:name"]["label"]
@@ -23,17 +25,22 @@ module Apprank
         :amount => hash["im:price"]["attributes"]["amount"].to_f,
         :currency => hash["im:price"]["attributes"]["currency"]
       }
+      @content_type = hash["rights"]["contentType"]
       @rights = hash["rights"]["label"]
-      @display_name = hash["title"]["label"]
-      hash["link"].each do |link|
-        if link["attributes"]["title"] == "Preview"
-          @preview = link["attributes"]["href"]
-        else
-          @link = link["attributes"]["href"]
-        end
+      @title = hash["title"]["label"]
+
+      link = hash["link"]
+      if link["attributes"]["title"] == "Preview"
+        @preview = link["attributes"]["href"]
+      else
+        @link = link["attributes"]["href"]
       end
+
       @itunes_url = hash["id"]["label"]
-      @developer = {
+      @itunes_id = hash["id"]['attributes']['im:id']
+      @bundle_id = hash["id"]['attributes']['im:bundleId']
+
+      @artist = {
         :name => hash["im:artist"]["label"],
         :url => hash["im:artist"]["attributes"]["href"]
       }
