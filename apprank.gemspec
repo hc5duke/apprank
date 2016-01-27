@@ -1,6 +1,7 @@
 Gem::Specification.new do |s|
   s.name = %q{apprank}
-  s.version = "1.0.0"
+  s.version = "1.0.1"
+  s.licenses    = ['MIT']
   s.date = %q{2016-01-25}
   s.authors = ["hc5duke"]
   s.email = %q{hc5duke@gmail.com}
