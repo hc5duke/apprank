@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.files = [
     "Gemfile",
     "LICENSE",
-    "README",
+    "README.md",
     "lib/apprank.rb",
     "lib/apprank/app.rb",
     "lib/apprank/rank.rb",
