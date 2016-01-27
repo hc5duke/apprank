@@ -5,11 +5,12 @@ describe Rank do
   describe "when you load the data" do
     it "should get data" do
 
-      feed = create_fake_feed(100)
-      rank = Rank.new({ :feed => feed }.to_json)
-      rank.apps.length.should == 100
-      rank.link.should == feed[:link][1][:attributes][:href]
-      (rank.updated - Time.now).abs.should < 10
+      data = SpecHelper.data
+      rank = Rank.new(data)
+
+      expect(rank.apps.length).to  eq(25)
+      expect(rank.link).to         eq("https://itunes.apple.com/us/rss/topfreeapplications/limit=25/json")
+      expect(rank.updated.to_i).to eq(1453708166)
 
     end
   end
